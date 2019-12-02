@@ -1,24 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script type="text/javascript" src="script.js">
-  </script>
-  <link rel="stylesheet" href="style.css">
-  <title>Document</title>
-</head>
-<body>
-  <div class="game-intro">
-    <img src="./images/logo-rabbit.jpg" alt="" class="logo-img">
-    <br>
-    <button id="start-button">StartGame</button>
-    <p>Use the left and right arrow to control the car!</p>
-    <img src="./images/arrow-button-keyboard-icon-on-white-background-vector-19306890.jpg" alt="" class="arrows-img">
-  </div>
-  <div id="game-board">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script type="text/javascript" src="script.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <div class="game-intro">
+        <img src="./images/logo-rabbit.png" alt="" class="logo-img" />
 
-  </div>
-</body>
+        <div class="start-game-buttons">
+          <button id="start-1-player-game">Player 1</button>
+          <button id="start-2-player-game">Player 2</button>
+        </div>
+
+        <img
+          src="./images/arrow-button-keyboard-icon-on-white-background-vector-19306890.jpg"
+          alt=""
+          class="arrows-img"
+        />
+        <p>Use the left, right, up and down arrow to control the rabbit!</p>
+      </div>
+      <div id="game-board"></div>
+    </header>
+  </body>
 </html>
