@@ -4,16 +4,18 @@
 } */
 
 /*.game-intro p {
+  display: flex;
+  justify-content: flex-end;
   font-size: 18px;
   font-family: "Verdana";
 }*/
 
 .logo-img {
-  width: 300px;
+  width: 200px;
 }
 
 .arrows-img {
-  width: 150px;
+  height: 100px;
 }
 
 body button {
@@ -31,19 +33,27 @@ body button {
   float: left;
   padding: 20px 0px;
 } */
-
-.game-intro {
-  float: left;
-  padding: 0% 10%;
+#game-board {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   font-size: 18px;
   font-family: "Verdana";
+  text-align: center;
+  
+}
+
+.game-intro {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+ 
 }
 
 .start-game-buttons {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+  justify-items: center;
 }
