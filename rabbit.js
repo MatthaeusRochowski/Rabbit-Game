@@ -3,7 +3,7 @@ class CanvasGame {
     this.canvas = document.createElement("canvas");
     this.canvas.width = width;
     this.canvas.height = height;
-    this.canvas.style = "border: 1px solid red";
+    this.canvas.style = "border: 1px solid white";
     this.ctx = this.canvas.getContext("2d");
     document.body.after(this.canvas, document.body.childNodes[0]);
   }
@@ -26,27 +26,42 @@ class RabbitGame extends CanvasGame {
 
     this.ctx.fillStyle = "grey";
     this.ctx.fillRect(0, lane, width, 4 * lane); // lanes direction left
+
+    this.ctx.beginPath();
     this.ctx.lineWidth = 2.0;
-    this.ctx.moveTo(0, 2*lane);
-    this.ctx.lineTo(width, 2*lane);
-    this.ctx.moveTo(0, 3*lane);
-    this.ctx.lineTo(width, 3*lane);
-    this.ctx.moveTo(0, 4*lane);
-    this.ctx.lineTo(width, 4*lane);
+    this.ctx.moveTo(0, 2 * lane);
+    this.ctx.lineTo(width, 2 * lane);
+    this.ctx.moveTo(0, 3 * lane);
+    this.ctx.lineTo(width, 3 * lane);
+    this.ctx.moveTo(0, 4 * lane);
+    this.ctx.lineTo(width, 4 * lane);
     this.ctx.strokeStyle = "white";
     this.ctx.setLineDash([20, 20]);
     this.ctx.stroke();
 
     this.ctx.fillRect(0, 6 * lane, width, 4 * lane); // lanes direction right
+    this.ctx.beginPath();
     this.ctx.lineWidth = 2.0;
-    this.ctx.moveTo(0, 7*lane);
-    this.ctx.lineTo(width, 7*lane);
-    this.ctx.moveTo(0, 8*lane);
-    this.ctx.lineTo(width, 8*lane);
-    this.ctx.moveTo(0, 9*lane);
-    this.ctx.lineTo(width, 9*lane);
+    this.ctx.moveTo(0, 7 * lane);
+    this.ctx.lineTo(width, 7 * lane);
+    this.ctx.moveTo(0, 8 * lane);
+    this.ctx.lineTo(width, 8 * lane);
+    this.ctx.moveTo(0, 9 * lane);
+    this.ctx.lineTo(width, 9 * lane);
     this.ctx.strokeStyle = "white";
     this.ctx.setLineDash([20, 20]);
+    this.ctx.stroke();
+
+    this.ctx.beginPath();
+    this.ctx.moveTo(0, lane);
+    this.ctx.lineTo(width, lane);
+    this.ctx.moveTo(0, 5 * lane);
+    this.ctx.lineTo(width, 5 * lane);
+    this.ctx.moveTo(0, 6 * lane);
+    this.ctx.lineTo(width, 6 * lane);
+    this.ctx.moveTo(0, 10 * lane);
+    this.ctx.lineTo(width, 10 * lane);
+    this.ctx.setLineDash([]);
     this.ctx.stroke();
   }
 }
