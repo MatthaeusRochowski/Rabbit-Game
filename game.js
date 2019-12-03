@@ -25,10 +25,7 @@ class RabbitGame extends CanvasGame {
     this.interval = setInterval(this.updateGamesState, 30);
     this.road.draw();
     this.movePlayer = this.movePlayer.bind(this);
-    this.stopPlayer = this.stopPlayer.bind(this);
     document.onkeydown = e => this.movePlayer(e.keyCode);
-    document.onkeyup = e => this.stopPlayer(e.keyCode);
-    //debugger;
   }
 
   updateGamesState() {
@@ -37,37 +34,36 @@ class RabbitGame extends CanvasGame {
     this.road.draw();
     this.showPlayerScore();
     this.showPlayerLifes();
-    this.player.update();
+    this.player.setPlayer();
     this.player.addPoints();
   }
 
   movePlayer(keyCode) {
     switch (keyCode) {
       case 38:
-        this.player.speedY -= 1;
-        if (this.player.positionY < this.canvas.height / 10 - this.player.height) {
-          debugger;
+        this.player.positionY -= 10;
+        if (
+          this.player.positionY <
+          this.canvas.height / 11 - this.player.height
+        ) {
           this.player.positionX = this.player.startX;
           this.player.positionY = this.player.startY;
           return (this.player.points += 500);
         }
         break;
       case 40:
-        this.player.speedY += 1;
+        if (this.player.positionY < this.road.height - 40)
+          this.player.positionY += 10;
         break;
       case 37:
-        this.player.speedX -= 1;
+        if (this.player.positionX > 0) this.player.positionX -= 10;
         break;
       case 39:
-        this.player.speedX += 1;
+        if (this.player.positionX < this.road.width - 40)
+          this.player.positionX += 10;
         break;
       default:
     }
-  }
-
-  stopPlayer(keyCode) {
-    this.player.speedX = 0;
-    this.player.speedY = 0;
   }
 
   showPlayerScore() {
@@ -89,12 +85,10 @@ class RabbitGame extends CanvasGame {
   }
 }
 
-
-
-/*   function startGame(playerNo) {
-    switch (playerNo) {
-      case "1p":
-          return new RabbitGame(1400, 715);
-    }
-    //startOnePlayer.disabled = true;
-  } */
+window.onload = function() {
+  const startOnePlayer = document.getElementById("start-1-player-game");
+  startOnePlayer.onclick = function() {
+    new RabbitGame(1400, 715);
+    startOnePlayer.disabled = true;
+  };
+};
