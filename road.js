@@ -1,54 +1,55 @@
 class Road {
   constructor(width, height, ctx) {
-
+    this.height = height;
+    this.width = width;
     this.ctx = ctx;
+    this.lane = this.height / 11;
   }
 
-  draw(width, height) {
-    let lane = height / 11;
-
+  draw() {
+    console.log("draw road");
     this.ctx.fillStyle = "green";
-    this.ctx.fillRect(0, 0, width, lane); // upper grass lane
-    this.ctx.fillRect(0, 10 * lane, width, lane); // lower grass lane
-    this.ctx.fillRect(0, 5 * lane, width, lane); // middle grass lane
+    this.ctx.fillRect(0, 0, this.width, this.lane); // upper grass this.lane
+    this.ctx.fillRect(0, 10 * this.lane, this.width, this.lane); // lower grass this.lane
+    this.ctx.fillRect(0, 5 * this.lane, this.width, this.lane); // middle grass this.lane
 
     this.ctx.fillStyle = "grey";
-    this.ctx.fillRect(0, lane, width, 4 * lane); // lanes direction left
+    this.ctx.fillRect(0, this.lane, this.width, 4 * this.lane); // this.lanes direction left
 
     this.ctx.beginPath();
     this.ctx.lineWidth = 2.0;
-    this.ctx.moveTo(0, 2 * lane);
-    this.ctx.lineTo(width, 2 * lane);
-    this.ctx.moveTo(0, 3 * lane);
-    this.ctx.lineTo(width, 3 * lane);
-    this.ctx.moveTo(0, 4 * lane);
-    this.ctx.lineTo(width, 4 * lane);
+    this.ctx.moveTo(0, 2 * this.lane);
+    this.ctx.lineTo(this.width, 2 * this.lane);
+    this.ctx.moveTo(0, 3 * this.lane);
+    this.ctx.lineTo(this.width, 3 * this.lane);
+    this.ctx.moveTo(0, 4 * this.lane);
+    this.ctx.lineTo(this.width, 4 * this.lane);
     this.ctx.strokeStyle = "white";
     this.ctx.setLineDash([20, 20]);
     this.ctx.stroke();
 
-    this.ctx.fillRect(0, 6 * lane, width, 4 * lane); // lanes direction right
+    this.ctx.fillRect(0, 6 * this.lane, this.width, 4 * this.lane); // this.lanes direction right
     this.ctx.beginPath();
     this.ctx.lineWidth = 2.0;
-    this.ctx.moveTo(0, 7 * lane);
-    this.ctx.lineTo(width, 7 * lane);
-    this.ctx.moveTo(0, 8 * lane);
-    this.ctx.lineTo(width, 8 * lane);
-    this.ctx.moveTo(0, 9 * lane);
-    this.ctx.lineTo(width, 9 * lane);
+    this.ctx.moveTo(0, 7 * this.lane);
+    this.ctx.lineTo(this.width, 7 * this.lane);
+    this.ctx.moveTo(0, 8 * this.lane);
+    this.ctx.lineTo(this.width, 8 * this.lane);
+    this.ctx.moveTo(0, 9 * this.lane);
+    this.ctx.lineTo(this.width, 9 * this.lane);
     this.ctx.strokeStyle = "white";
     this.ctx.setLineDash([20, 20]);
     this.ctx.stroke();
 
     this.ctx.beginPath();
-    this.ctx.moveTo(0, lane);
-    this.ctx.lineTo(width, lane);
-    this.ctx.moveTo(0, 5 * lane);
-    this.ctx.lineTo(width, 5 * lane);
-    this.ctx.moveTo(0, 6 * lane);
-    this.ctx.lineTo(width, 6 * lane);
-    this.ctx.moveTo(0, 10 * lane);
-    this.ctx.lineTo(width, 10 * lane);
+    this.ctx.moveTo(0, this.lane);
+    this.ctx.lineTo(this.width, this.lane);
+    this.ctx.moveTo(0, 5 * this.lane);
+    this.ctx.lineTo(this.width, 5 * this.lane);
+    this.ctx.moveTo(0, 6 * this.lane);
+    this.ctx.lineTo(this.width, 6 * this.lane);
+    this.ctx.moveTo(0, 10 * this.lane);
+    this.ctx.lineTo(this.width, 10 * this.lane);
     this.ctx.setLineDash([]);
     this.ctx.stroke();
   }

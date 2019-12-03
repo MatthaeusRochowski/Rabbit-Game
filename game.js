@@ -13,19 +13,42 @@ class RabbitGame extends CanvasGame {
   constructor(width, height) {
     super(width, height);
 
-    this.road = new Road(width, height, this.ctx);
-    this.road.draw(width, height);
+    this.road = new Road( this.canvas.width,  this.canvas.height, this.ctx);
+    this.player = new Player( this.canvas.width/28*2,  this.canvas.height/11*10, this.ctx); 
+
+    this.frames = 0;
+    this.updateGamesState = this.updateGamesState.bind(this);
+    this.interval = setInterval(this.updateGamesState, 30);
+    this.road.draw();
+    //debugger;
+  }
+
+  updateGamesState() {
+    this.clearCanvas();
+    this.frames += 1;
+    this.road.draw();
+    this.player.update();
+  }
+
+  clearCanvas() {
+    this.ctx.clearRect(0, 0, this.width, this.height);
   }
 }
 
 window.onload = function() {
+  var game; 
   const startOnePlayer = document.getElementById("start-1-player-game");
   startOnePlayer.onclick = function() {
-    startGame();
+    game = new RabbitGame(1400, 715);
+    return game;
   };
-
-  function startGame() {
-    let game = new RabbitGame(1400, 715);
-    //startOnePlayer.disabled = true;
-  }
 };
+
+
+/*   function startGame(playerNo) {
+    switch (playerNo) {
+      case "1p":
+          return new RabbitGame(1400, 715);
+    }
+    //startOnePlayer.disabled = true;
+  } */
