@@ -9,20 +9,11 @@ class MovingRectangle {
     this.positionX = x;
     this.positionY = y;
     this.ctx = ctx;
-    this.speedX = 0;
-    this.speedY = 0;
-    console.log("ich bin das Rectangle");
   }
 
   draw() {
     this.ctx.fillStyle = this.color;
     this.ctx.fillRect(this.positionX, this.positionY, this.width, this.height);
-  }
-
-  setPlayer() {
-    this.startX;
-    this.startY;
-    this.draw();
   }
 }
 
@@ -32,11 +23,20 @@ class Player extends MovingRectangle {
 
     this.points = 0;
     this.lifes = 3;
+    this.carrots = 0;
   }
 
-
-  addPoints() {
-    if (this.positionY < this.height / 10) return (this.points += 500);
+  left() {
+    return this.positionX;
+  }
+  right() {
+    return this.positionX + this.width;
+  }
+  top() {
+    return this.positionY;
+  }
+  bottom() {
+    return this.positionY + this.height;
   }
 
   looseLife() {

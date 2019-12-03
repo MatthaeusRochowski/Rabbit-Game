@@ -7,7 +7,7 @@ class Road {
   }
 
   draw() {
-    console.log("draw road");
+    //console.log("draw road");
     this.ctx.fillStyle = "green";
     this.ctx.fillRect(0, 0, this.width, this.lane); // upper grass this.lane
     this.ctx.fillRect(0, 10 * this.lane, this.width, this.lane); // lower grass this.lane

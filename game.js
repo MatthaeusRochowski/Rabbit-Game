@@ -19,12 +19,14 @@ class RabbitGame extends CanvasGame {
       (this.canvas.height / 11) * 10,
       this.ctx
     );
+    this.carrot = new Carrot(this.canvas.width, this.canvas.height, this.ctx);
 
     this.frames = 0;
     this.updateGamesState = this.updateGamesState.bind(this);
     this.interval = setInterval(this.updateGamesState, 30);
     this.road.draw();
     this.movePlayer = this.movePlayer.bind(this);
+    //this.collectCarrot = this.collectCarrot.bind(this);
     document.onkeydown = e => this.movePlayer(e.keyCode);
   }
 
@@ -32,10 +34,11 @@ class RabbitGame extends CanvasGame {
     this.clearCanvas();
     this.frames += 1;
     this.road.draw();
+    this.player.draw();
     this.showPlayerScore();
     this.showPlayerLifes();
-    this.player.setPlayer();
-    this.player.addPoints();
+    this.collectCarrot();
+    this.carrot.draw();
   }
 
   movePlayer(keyCode) {
@@ -78,6 +81,23 @@ class RabbitGame extends CanvasGame {
     this.ctx.font = "20px Arial";
     this.ctx.fillStyle = "black";
     this.ctx.fillText(`Life:  ${lifes}`, 10, this.canvas.height / 2 + 20);
+  }
+
+  foundCarrot() {
+    //console.log("collect Carrot");
+    return !(
+      this.player.bottom() < this.carrot.top() ||
+      this.player.top() > this.carrot.bottom() ||
+      this.player.right() < this.carrot.left() ||
+      this.player.left() > this.carrot.right()
+    );
+  }
+
+  collectCarrot() {
+    if (this.foundCarrot()) {
+      this.carrot.positionX = Math.floor(Math.random() * this.canvas.width);
+      this.carrot.positionY = Math.floor(Math.random() * this.canvas.height);
+    }
   }
 
   clearCanvas() {
