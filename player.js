@@ -19,9 +19,9 @@ class MovingRectangle {
     this.ctx.fillRect(this.positionX, this.positionY, this.width, this.height);
   }
 
-  update() {
-    this.positionX += this.speedX;
-    this.positionY += this.speedY;
+  setPlayer() {
+    this.startX;
+    this.startY;
     this.draw();
   }
 }
