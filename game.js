@@ -37,8 +37,8 @@ class RabbitGame extends CanvasGame {
     this.player.draw();
     this.showPlayerScore();
     this.showPlayerLifes();
-    this.collectCarrot();
     this.carrot.draw();
+    this.collectCarrot();
   }
 
   movePlayer(keyCode) {
@@ -71,9 +71,10 @@ class RabbitGame extends CanvasGame {
 
   showPlayerScore() {
     let points = this.player.points;
+    let carrots = this.player.carrots;
     this.ctx.font = "20px Arial";
     this.ctx.fillStyle = "black";
-    this.ctx.fillText(`Score:  ${points}`, 10, this.canvas.height / 2 - 10);
+    this.ctx.fillText(`Score:  ${points}, Carrots:  ${carrots}`, 10, this.canvas.height / 2 - 10);
   }
 
   showPlayerLifes() {
@@ -83,20 +84,21 @@ class RabbitGame extends CanvasGame {
     this.ctx.fillText(`Life:  ${lifes}`, 10, this.canvas.height / 2 + 20);
   }
 
-  foundCarrot() {
-    //console.log("collect Carrot");
-    return !(
-      this.player.bottom() < this.carrot.top() ||
-      this.player.top() > this.carrot.bottom() ||
-      this.player.right() < this.carrot.left() ||
-      this.player.left() > this.carrot.right()
-    );
-  }
-
   collectCarrot() {
-    if (this.foundCarrot()) {
-      this.carrot.positionX = Math.floor(Math.random() * this.canvas.width);
-      this.carrot.positionY = Math.floor(Math.random() * this.canvas.height);
+    //console.log("collect Carrot");
+    if (
+      this.player.positionX < this.carrot.positionX + this.carrot.width && //player finds carrot left to him
+      this.player.positionX + this.player.width > this.carrot.positionX && //player finds carrot right to him
+      this.player.positionY < this.carrot.positionY + this.carrot.height && //player finds carrot above to him
+      this.player.positionY + this.player.height > this.carrot.positionY //player finds carrot bottom to him
+    ) {
+      this.player.points += 25;
+      this.player.carrots += 1;
+      if (this.player.carrots === 3) {
+        this.player.carrots = 0;
+        this.player.lifes += 1;
+      } 
+      return this.carrot = new Carrot(this.canvas.width, this.canvas.height, this.ctx); //this.carrot.draw();
     }
   }
 

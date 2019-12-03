@@ -26,19 +26,6 @@ class Player extends MovingRectangle {
     this.carrots = 0;
   }
 
-  left() {
-    return this.positionX;
-  }
-  right() {
-    return this.positionX + this.width;
-  }
-  top() {
-    return this.positionY;
-  }
-  bottom() {
-    return this.positionY + this.height;
-  }
-
   looseLife() {
     this.lifes -= 1;
     return this.lifes;
