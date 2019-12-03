@@ -11,19 +11,19 @@
     <header>
       <div class="game-intro">
         <div class="logo">
-        <img src="./images/logo-rabbit.png" alt="" class="logo-img" />
+          <img src="./images/logo-rabbit.png" alt="" class="logo-img" />
         </div>
         <div class="start-game-buttons">
           <button id="start-1-player-game">Player 1</button>
           <button id="start-2-player-game">Player 2</button>
         </div>
         <div id="game-board">
-        <img
-          src="./images/arrow-button-keyboard-icon-on-white-background-vector-19306890.jpg"
-          alt=""
-          class="arrows-img"
-        />
-        <p>Use the left, right, up and down arrow to control the rabbit!</p>
+          <img
+            src="./images/arrow-button-keyboard-icon-on-white-background-vector-19306890.jpg"
+            alt=""
+            class="arrows-img"
+          />
+          <p>Use the left, right, up and down arrow to control the rabbit!</p>
         </div>
       </div>
     </header>
@@ -31,7 +31,13 @@
     <script type="text/javascript" src="road.js"></script>
     <script type="text/javascript" src="game.js"></script>
     <script type="text/javascript" src="cars.js"></script> 
+    <script>
+      window.onload = function() {
+        const startOnePlayer = document.getElementById("start-1-player-game");
+        startOnePlayer.onclick = function() {
+          new RabbitGame(1400, 715);
+        };
+      };
+    </script>
   </body>
-  
 </html>
-

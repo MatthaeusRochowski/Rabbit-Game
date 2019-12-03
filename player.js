@@ -4,6 +4,8 @@ class MovingRectangle {
     this.width = width;
     this.height = height;
     this.color = color;
+    this.startX = x;
+    this.startY = y;
     this.positionX = x;
     this.positionY = y;
     this.ctx = ctx;
@@ -27,26 +29,18 @@ class MovingRectangle {
 class Player extends MovingRectangle {
   constructor(x, y, ctx) {
     super(x, y, "red", 40, 40, ctx);
-    document.onkeydown = e => {
-      switch (e.keyCode) {
-        case 38:
-          this.speedY -= 1;
-          break;
-        case 40:
-          this.speedY += 1;
-          break;
-        case 37:
-          this.speedX -= 1;
-          break;
-        case 39:
-          this.speedX += 1;
-          break;
-        default:
-      }
-    };
-    document.onkeyup = e => {
-      this.speedX = 0;
-      this.speedY = 0;
-    };
+
+    this.points = 0;
+    this.lifes = 3;
+  }
+
+
+  addPoints() {
+    if (this.positionY < this.height / 10) return (this.points += 500);
+  }
+
+  looseLife() {
+    this.lifes -= 1;
+    return this.lifes;
   }
 }
