@@ -21,12 +21,57 @@ class RabbitGame extends CanvasGame {
     );
     this.carrot = new Carrot(this.canvas.width, this.canvas.height, this.ctx);
 
+    // Instantiate 8 car objects
+
+    // carArray
+    this.carArray = [];
+
+    // const CAR_WIDTH = this.canvas.width / 28 * 1.5
+    const carWidth = (this.canvas.width / 28) * 1.5;
+    const carHeight = (this.canvas.height / 11 / 6.5) * 4;
+    const truckWidth = (this.canvas.width / 28) * 2.5;
+    const truckHeight = (this.canvas.height / 11 / 6.5) * 4;
+
+    this.car1 = new Car(
+      0,
+      (this.canvas.height / 11) * 9 + carHeight / 4,
+      carWidth,
+      carHeight,
+      5,
+      this.ctx
+    );
+    this.car2 = new Car(
+      0,
+      (this.canvas.height / 11) * 8 + truckHeight / 4,
+      truckWidth,
+      truckHeight,
+      7,
+      this.ctx
+    );
+    this.car3 = new Car(
+      0,
+      (this.canvas.height / 11) * 7 + carHeight / 4,
+      carWidth,
+      carHeight,
+      -10,
+      this.ctx
+    );
+    this.car4 = new Car(
+      0,
+      (this.canvas.height / 11) * 6 + truckHeight / 4,
+      truckWidth,
+      truckHeight,
+      15,
+      this.ctx
+    );
+
+    this.carArray = [this.car1, this.car2, this.car3, this.car4];
+
     this.frames = 0;
     this.updateGamesState = this.updateGamesState.bind(this);
     this.interval = setInterval(this.updateGamesState, 30);
     this.road.draw();
     this.movePlayer = this.movePlayer.bind(this);
-    //this.collectCarrot = this.collectCarrot.bind(this);
     document.onkeydown = e => this.movePlayer(e.keyCode);
   }
 
@@ -35,10 +80,23 @@ class RabbitGame extends CanvasGame {
     this.frames += 1;
     this.road.draw();
     this.player.draw();
+
+    for (let i = 0; i < this.carArray.length; i++) {
+      this.carArray[i].draw();
+    }
+
+    this.move();
+
+    /* this.car1.draw();
+    this.car2.draw();
+    this.car3.draw();
+    this.car4.draw(); */
+
     this.showPlayerScore();
     this.showPlayerLifes();
     this.carrot.draw();
     this.collectCarrot();
+    //this.moveCar();
   }
 
   movePlayer(keyCode) {
@@ -69,12 +127,41 @@ class RabbitGame extends CanvasGame {
     }
   }
 
+  move() {
+    for (let i = 0; i < this.carArray.length; i++) {
+      this.carArray[i].positionX = this.carArray[i].speed;
+      if (this.carArray[i].positionX > this.canvas.width)
+        this.carArray[i].positionX = 0;
+    }
+  }
+
+  /*   moveCar() {
+    this.car.positionX += this.car.speed;
+    if (this.car.positionX > this.canvas.width) this.car.positionX = 0;
+    
+    this.car1.positionX += this.car1.speed;
+    if (this.car1.positionX > this.canvas.width)  this.car1.positionX = 0;
+
+    this.car2.positionX += this.car2.speed;
+    if (this.car2.positionX > this.canvas.width)  this.car2.positionX = 0;
+
+    this.car3.positionX += this.car3.speed;
+    if (this.car3.positionX > this.canvas.width)  this.car3.positionX = 0;
+
+    this.car4.positionX += this.car4.speed;
+    if (this.car4.positionX > this.canvas.width)  this.car4.positionX = 0;
+  } */
+
   showPlayerScore() {
     let points = this.player.points;
     let carrots = this.player.carrots;
     this.ctx.font = "20px Arial";
     this.ctx.fillStyle = "black";
-    this.ctx.fillText(`Score:  ${points}, Carrots:  ${carrots}`, 10, this.canvas.height / 2 - 10);
+    this.ctx.fillText(
+      `Score:  ${points}, Carrots:  ${carrots}`,
+      10,
+      this.canvas.height / 2 - 10
+    );
   }
 
   showPlayerLifes() {
@@ -97,8 +184,12 @@ class RabbitGame extends CanvasGame {
       if (this.player.carrots === 3) {
         this.player.carrots = 0;
         this.player.lifes += 1;
-      } 
-      return this.carrot = new Carrot(this.canvas.width, this.canvas.height, this.ctx); //this.carrot.draw();
+      }
+      return (this.carrot = new Carrot(
+        this.canvas.width,
+        this.canvas.height,
+        this.ctx
+      )); //this.carrot.draw();
     }
   }
 

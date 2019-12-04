@@ -6,9 +6,11 @@ class MovingRectangle {
     this.color = color;
     this.startX = x;
     this.startY = y;
+    this.speed = 0;
     this.positionX = x;
     this.positionY = y;
     this.ctx = ctx;
+    this.draw = this.draw.bind(this);
   }
 
   draw() {
