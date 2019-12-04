@@ -23,7 +23,7 @@ class Player extends MovingRectangle {
   constructor(x, y, ctx) {
     super(x, y, "red", 40, 40, ctx);
 
-    this.points = 0;
+    this.points = 9400;
     this.lifes = 3;
     this.carrots = 0;
   }

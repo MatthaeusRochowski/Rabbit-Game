@@ -13,6 +13,11 @@ class RabbitGame extends CanvasGame {
   constructor(width, height) {
     super(width, height);
 
+    this.gameOverImg = new Image();
+    this.gameOverImg.src = "./Images/gameOver.jpg";
+    this.winGameImg = new Image();
+    this.winGameImg.src = "./Images/winGame.jpg";
+
     this.road = new Road(this.canvas.width, this.canvas.height, this.ctx);
     this.player = new Player(
       (this.canvas.width / 28) * 2,
@@ -130,6 +135,7 @@ class RabbitGame extends CanvasGame {
     this.move();
 
     this.showPlayerScore();
+    if(this.player.points >= 10000) return this.winGame();
     this.showPlayerLifes();
     this.carrot.draw();
     this.collectCarrot();
@@ -146,7 +152,7 @@ class RabbitGame extends CanvasGame {
         ) {
           this.player.positionX = this.player.startX;
           this.player.positionY = this.player.startY;
-          return (this.player.points += 500);
+          return this.player.points += 500;
         }
         break;
       case 40:
@@ -160,6 +166,31 @@ class RabbitGame extends CanvasGame {
         if (this.player.positionX < this.road.width - 40)
           this.player.positionX += 10;
         break;
+
+        /*
+case 38:
+        this.player2.positionY -= 10;
+        if (
+          this.player2.positionY <
+          this.canvas.height / 11 - this.player2.height
+        ) {
+          this.player.positionX = this.player.startX;
+          this.player.positionY = this.player.startY;
+          return (this.player.points += 500);
+        }
+        break;
+      case 65:
+        if (this.player.positionY < this.road.height - 40)
+          this.player.positionY += 10;
+        break;
+      case 37:
+        if (this.player.positionX > 0) this.player.positionX -= 10;
+        break;
+      case 39:
+        if (this.player.positionX < this.road.width - 40)
+          this.player.positionX += 10;
+        break;
+        */
       default:
     }
   }
@@ -226,15 +257,29 @@ class RabbitGame extends CanvasGame {
           this.carArray[i].positionY + this.carArray[i].height &&
         this.player.positionY + this.player.height > this.carArray[i].positionY
       ) {
+        if (this.player.lifes > 0) {
         this.player.positionX = this.player.startX;
         this.player.positionY = this.player.startY;
-        return this.player.looseLife();
+        this.player.looseLife();
+        } else {
+          this.gameOver(); 
+        }
       }
     }
   }
 
   clearCanvas() {
     this.ctx.clearRect(0, 0, this.width, this.height);
+  }
+
+  gameOver() {
+    clearInterval(this.interval);
+    this.ctx.drawImage(this.gameOverImg, 0, 0, this.canvas.width, this.canvas.height);
+  }
+
+  winGame() {
+    clearInterval(this.interval);
+    this.ctx.drawImage(this.winGameImg, 0, 0, this.canvas.width, this.canvas.height);
   }
 }
 
