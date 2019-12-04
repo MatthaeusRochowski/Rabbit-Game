@@ -8,7 +8,6 @@ class Carrot {
   }
 
   draw() {
-    console.log(this.positionX, this.positionY);
     this.ctx.fillStyle = "orange";
     this.ctx.fillRect(this.positionX, this.positionY, this.width, this.height);
   }
