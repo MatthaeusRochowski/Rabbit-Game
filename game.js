@@ -22,18 +22,16 @@ class RabbitGame extends CanvasGame {
     this.carrot = new Carrot(this.canvas.width, this.canvas.height, this.ctx);
 
     // Instantiate 8 car objects
-
     // carArray
     this.carArray = [];
 
-    // const CAR_WIDTH = this.canvas.width / 28 * 1.5
     const carWidth = (this.canvas.width / 28) * 1.5;
     const carHeight = (this.canvas.height / 11 / 6.5) * 4;
     const truckWidth = (this.canvas.width / 28) * 2.5;
     const truckHeight = (this.canvas.height / 11 / 6.5) * 4;
 
     this.car1 = new Car(
-      0,
+      -carWidth,
       (this.canvas.height / 11) * 9 + carHeight / 4,
       carWidth,
       carHeight,
@@ -41,7 +39,7 @@ class RabbitGame extends CanvasGame {
       this.ctx
     );
     this.car2 = new Car(
-      0,
+      -carWidth,
       (this.canvas.height / 11) * 8 + truckHeight / 4,
       truckWidth,
       truckHeight,
@@ -49,15 +47,15 @@ class RabbitGame extends CanvasGame {
       this.ctx
     );
     this.car3 = new Car(
-      0,
+      -carWidth,
       (this.canvas.height / 11) * 7 + carHeight / 4,
       carWidth,
       carHeight,
-      -10,
+      10,
       this.ctx
     );
     this.car4 = new Car(
-      0,
+      -carWidth,
       (this.canvas.height / 11) * 6 + truckHeight / 4,
       truckWidth,
       truckHeight,
@@ -65,7 +63,51 @@ class RabbitGame extends CanvasGame {
       this.ctx
     );
 
-    this.carArray = [this.car1, this.car2, this.car3, this.car4];
+    //Cars right side
+
+    this.car5 = new Car(
+      1400,
+      (this.canvas.height / 11) * 1 + carHeight / 4,
+      carWidth,
+      carHeight,
+      -5,
+      this.ctx
+    );
+    this.car6 = new Car(
+      1400,
+      (this.canvas.height / 11) * 2 + truckHeight / 4,
+      truckWidth,
+      truckHeight,
+      -7,
+      this.ctx
+    );
+    this.car7 = new Car(
+      1400,
+      (this.canvas.height / 11) * 3 + carHeight / 4,
+      carWidth,
+      carHeight,
+      -10,
+      this.ctx
+    );
+    this.car8 = new Car(
+      1400,
+      (this.canvas.height / 11) * 4 + truckHeight / 4,
+      truckWidth,
+      truckHeight,
+      -15,
+      this.ctx
+    );
+
+    this.carArray = [
+      this.car1,
+      this.car2,
+      this.car3,
+      this.car4,
+      this.car5,
+      this.car6,
+      this.car7,
+      this.car8
+    ];
 
     this.frames = 0;
     this.updateGamesState = this.updateGamesState.bind(this);
@@ -87,16 +129,11 @@ class RabbitGame extends CanvasGame {
 
     this.move();
 
-    /* this.car1.draw();
-    this.car2.draw();
-    this.car3.draw();
-    this.car4.draw(); */
-
     this.showPlayerScore();
     this.showPlayerLifes();
     this.carrot.draw();
     this.collectCarrot();
-    //this.moveCar();
+    this.collided();
   }
 
   movePlayer(keyCode) {
@@ -129,28 +166,14 @@ class RabbitGame extends CanvasGame {
 
   move() {
     for (let i = 0; i < this.carArray.length; i++) {
-      this.carArray[i].positionX = this.carArray[i].speed;
-      if (this.carArray[i].positionX > this.canvas.width)
-        this.carArray[i].positionX = 0;
+      this.carArray[i].positionX += this.carArray[i].speed;
+      if (
+        this.carArray[i].positionX < -this.carArray[i].width ||
+        this.carArray[i].positionX > this.canvas.width
+      )
+        this.carArray[i].positionX = this.carArray[i].startX;
     }
   }
-
-  /*   moveCar() {
-    this.car.positionX += this.car.speed;
-    if (this.car.positionX > this.canvas.width) this.car.positionX = 0;
-    
-    this.car1.positionX += this.car1.speed;
-    if (this.car1.positionX > this.canvas.width)  this.car1.positionX = 0;
-
-    this.car2.positionX += this.car2.speed;
-    if (this.car2.positionX > this.canvas.width)  this.car2.positionX = 0;
-
-    this.car3.positionX += this.car3.speed;
-    if (this.car3.positionX > this.canvas.width)  this.car3.positionX = 0;
-
-    this.car4.positionX += this.car4.speed;
-    if (this.car4.positionX > this.canvas.width)  this.car4.positionX = 0;
-  } */
 
   showPlayerScore() {
     let points = this.player.points;
@@ -172,12 +195,11 @@ class RabbitGame extends CanvasGame {
   }
 
   collectCarrot() {
-    //console.log("collect Carrot");
     if (
-      this.player.positionX < this.carrot.positionX + this.carrot.width && //player finds carrot left to him
-      this.player.positionX + this.player.width > this.carrot.positionX && //player finds carrot right to him
-      this.player.positionY < this.carrot.positionY + this.carrot.height && //player finds carrot above to him
-      this.player.positionY + this.player.height > this.carrot.positionY //player finds carrot bottom to him
+      this.player.positionX < this.carrot.positionX + this.carrot.width &&
+      this.player.positionX + this.player.width > this.carrot.positionX &&
+      this.player.positionY < this.carrot.positionY + this.carrot.height &&
+      this.player.positionY + this.player.height > this.carrot.positionY
     ) {
       this.player.points += 25;
       this.player.carrots += 1;
@@ -189,7 +211,25 @@ class RabbitGame extends CanvasGame {
         this.canvas.width,
         this.canvas.height,
         this.ctx
-      )); //this.carrot.draw();
+      ));
+    }
+  }
+
+  collided() {
+    for (let i = 0; i < this.carArray.length; i++) {
+      if (
+        this.player.positionX <
+          this.carArray[i].positionX + this.carArray[i].width &&
+        this.player.positionX + this.player.width >
+          this.carArray[i].positionX &&
+        this.player.positionY <
+          this.carArray[i].positionY + this.carArray[i].height &&
+        this.player.positionY + this.player.height > this.carArray[i].positionY
+      ) {
+        this.player.positionX = this.player.startX;
+        this.player.positionY = this.player.startY;
+        return this.player.looseLife();
+      }
     }
   }
 
