@@ -18,7 +18,7 @@ class RabbitTwoPlayerGame extends CanvasGame {
     this.player2 = new Player(
       (this.canvas.width / 28) * 26,
       (this.canvas.height / 11) * 10,
-      "./images/Piedro.png",
+      "./images/Francesca.png",
       this.ctx
     );
 
