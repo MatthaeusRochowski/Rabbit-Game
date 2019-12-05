@@ -185,8 +185,8 @@ class RabbitOnePlayerGame extends CanvasGame {
       this.ctx.fillStyle = "black";
       this.ctx.fillText(
         `Score:  ${points}, Carrots:  ${carrots}`,
-        10,
-        this.canvas.height / 2 - 10
+        (this.canvas.width / 28),
+      (((this.canvas.height / 11) * 5) + (this.canvas.height / 30))
       );
     }
   
@@ -194,7 +194,7 @@ class RabbitOnePlayerGame extends CanvasGame {
       let lifes = this.player.lifes;
       this.ctx.font = "20px Arial";
       this.ctx.fillStyle = "black";
-      this.ctx.fillText(`Life:  ${lifes}`, 10, this.canvas.height / 2 + 20);
+      this.ctx.fillText(`Life:  ${lifes}`, (this.canvas.width / 28), (((this.canvas.height / 11) * 6) - (this.canvas.height / 45)));
     }
   
     collectCarrot() {

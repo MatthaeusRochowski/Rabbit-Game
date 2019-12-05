@@ -151,7 +151,7 @@ class RabbitTwoPlayerGame extends CanvasGame {
     this.showPlayerTwoScore();
 
     // change for 2 Player Game -> DONE
-    if ((this.player1.points || this.player2.points) >= 10000)
+    if (this.player1.points >= 10000 || this.player2.points >= 10000)
       return this.winGame();
 
     // change for 2 Player Game -> DONE
@@ -236,8 +236,8 @@ class RabbitTwoPlayerGame extends CanvasGame {
     this.ctx.fillStyle = "black";
     this.ctx.fillText(
       `Score:  ${points}, Carrots:  ${carrots}`,
-      10,
-      this.canvas.height / 2 - 10
+      (this.canvas.width / 28),
+      (((this.canvas.height / 11) * 5) + (this.canvas.height / 30))
     );
   }
 
@@ -248,23 +248,23 @@ class RabbitTwoPlayerGame extends CanvasGame {
     this.ctx.fillStyle = "black";
     this.ctx.fillText(
       `Score:  ${points}, Carrots:  ${carrots}`,
-      1390,
-      this.canvas.height / 2 - 10
-    );
+      (this.canvas.width / 28 * 22),
+      (((this.canvas.height / 11) * 5) + (this.canvas.height / 30)))
+    ;
   }
 
   showPlayerOneLifes() {
     let lifes = this.player1.lifes;
     this.ctx.font = "20px Arial";
     this.ctx.fillStyle = "black";
-    this.ctx.fillText(`Life:  ${lifes}`, 10, this.canvas.height / 2 + 20);
+    this.ctx.fillText(`Life:  ${lifes}`, (this.canvas.width / 28), (((this.canvas.height / 11) * 6) - (this.canvas.height / 45)));
   }
 
   showPlayerTwoLifes() {
     let lifes = this.player2.lifes;
     this.ctx.font = "20px Arial";
     this.ctx.fillStyle = "black";
-    this.ctx.fillText(`Life:  ${lifes}`, 1390, this.canvas.height / 2 + 20);
+    this.ctx.fillText(`Life:  ${lifes}`, (this.canvas.width / 28 * 22), (((this.canvas.height / 11) * 6) - (this.canvas.height / 45)));
   }
 
   collectCarrotPlayerOne() {
