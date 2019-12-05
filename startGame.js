@@ -7,13 +7,11 @@ window.onload = function() {
     myCanvas = document.getElementById("canvasId");
     if(myCanvas) myCanvas.remove();
     new RabbitOnePlayerGame(1400, 715);
-    console.log(myCanvas);
   };
 
   startTwoPlayer.onclick = function() {
     myCanvas = document.getElementById("canvasId");
     if(myCanvas) myCanvas.remove();
     new RabbitTwoPlayerGame(1400, 715);
-    console.log(myCanvas);
   };
 };

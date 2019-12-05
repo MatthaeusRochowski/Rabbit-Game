@@ -11,10 +11,12 @@ class RabbitOnePlayerGame extends CanvasGame {
       this.player = new Player(
         (this.canvas.width / 28) * 2,
         (this.canvas.height / 11) * 10,
+        (this.canvas.width / 28),
+        (this.canvas.height / 14),
         "./images/Piedro.png",
         this.ctx
       );
-      this.carrot = new Carrot(this.canvas.width, this.canvas.height, this.ctx);
+      this.carrot = new Carrot(this.canvas.width, this.canvas.height, (this.canvas.width / 50), (this.canvas.height / 25), this.ctx);
   
       // Instantiate 8 car objects
       // carArray
@@ -213,6 +215,8 @@ class RabbitOnePlayerGame extends CanvasGame {
         return (this.carrot = new Carrot(
           this.canvas.width,
           this.canvas.height,
+          (this.canvas.width / 50), 
+          (this.canvas.height / 25),
           this.ctx
         ));
       }

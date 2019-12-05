@@ -1,4 +1,3 @@
-//this will be the rabbit
 class MovingRectangle {
   constructor(x, y, color, width, height, ctx) {
     this.width = width;
@@ -17,17 +16,14 @@ class MovingRectangle {
   }
 
  draw() {
-  //this.ctx.fillStyle = this.color;
-  
   this.ctx.drawImage(this.img, this.positionX, this.positionY, this.width, this.height);
-  //this.ctx.fillRect(this.positionX, this.positionY, this.width, this.height);
   }
 }
 
 class Player extends MovingRectangle {
-  constructor(x, y, imgSrc, ctx) {
-    super(x, y, "red", 50, 50, ctx);
-    this.img.src = imgSrc; //"./images/Piedro.png";
+  constructor(x, y, width, height, imgSrc, ctx) {
+    super(x, y, "red", width, height, ctx);
+    this.img.src = imgSrc;
     this.points = 9400;
     this.lifes = 3;
     this.carrots = 0;
