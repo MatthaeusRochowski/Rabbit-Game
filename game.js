@@ -14,9 +14,9 @@ class RabbitGame extends CanvasGame {
     super(width, height);
 
     this.gameOverImg = new Image();
-    this.gameOverImg.src = "./Images/gameOver.jpg";
+    this.gameOverImg.src = "./images/gameOver.jpg";
     this.winGameImg = new Image();
-    this.winGameImg.src = "./Images/winGame.jpg";
+    this.winGameImg.src = "./images/winGame.jpg";
 
     this.road = new Road(this.canvas.width, this.canvas.height, this.ctx);
     this.player = new Player(

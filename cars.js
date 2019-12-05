@@ -4,4 +4,8 @@ class Car extends MovingRectangle {
     this.speed = speed;
    
   }
+  //draw() {
+    //this.ctx.fillStyle = "black";
+    //this.ctx.drawImage(this.carImg, this.positionX, this.positionY, this.width, this.height);
+//}
 }
