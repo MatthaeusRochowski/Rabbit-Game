@@ -18,7 +18,7 @@ class MovingRectangle {
 
  draw() {
   //this.ctx.fillStyle = this.color;
-  debugger;
+  
   this.ctx.drawImage(this.img, this.positionX, this.positionY, this.width, this.height);
   //this.ctx.fillRect(this.positionX, this.positionY, this.width, this.height);
   }
