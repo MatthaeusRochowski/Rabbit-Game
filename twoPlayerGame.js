@@ -22,7 +22,7 @@ class RabbitTwoPlayerGame extends CanvasGame {
       (this.canvas.height / 11) * 10,
       (this.canvas.width / 28), 
       (this.canvas.height / 14),
-      "./images/Piedro.png",
+      "./images/Francesca.png",
       this.ctx
     );
 
