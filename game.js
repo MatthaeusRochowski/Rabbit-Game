@@ -22,6 +22,7 @@ class RabbitGame extends CanvasGame {
     this.player = new Player(
       (this.canvas.width / 28) * 2,
       (this.canvas.height / 11) * 10,
+      "./images/Piedro.png",
       this.ctx
     );
     this.carrot = new Carrot(this.canvas.width, this.canvas.height, this.ctx);
@@ -41,6 +42,7 @@ class RabbitGame extends CanvasGame {
       carWidth,
       carHeight,
       5,
+      "./images/car2.right.png",
       this.ctx
     );
     this.car2 = new Car(
@@ -48,7 +50,7 @@ class RabbitGame extends CanvasGame {
       (this.canvas.height / 11) * 8 + truckHeight / 4,
       truckWidth,
       truckHeight,
-      7,
+      7, "./images/truck.png",
       this.ctx
     );
     this.car3 = new Car(
@@ -57,6 +59,7 @@ class RabbitGame extends CanvasGame {
       carWidth,
       carHeight,
       10,
+      "./images/car.png",
       this.ctx
     );
     this.car4 = new Car(
@@ -65,6 +68,7 @@ class RabbitGame extends CanvasGame {
       truckWidth,
       truckHeight,
       15,
+      "./images/truck.png",
       this.ctx
     );
 
@@ -76,6 +80,7 @@ class RabbitGame extends CanvasGame {
       carWidth,
       carHeight,
       -5,
+      "./images/car2.png",
       this.ctx
     );
     this.car6 = new Car(
@@ -84,6 +89,7 @@ class RabbitGame extends CanvasGame {
       truckWidth,
       truckHeight,
       -7,
+      "./images/truck.left.png",
       this.ctx
     );
     this.car7 = new Car(
@@ -92,6 +98,7 @@ class RabbitGame extends CanvasGame {
       carWidth,
       carHeight,
       -10,
+      "./images/car.left.png",
       this.ctx
     );
     this.car8 = new Car(
@@ -100,6 +107,7 @@ class RabbitGame extends CanvasGame {
       truckWidth,
       truckHeight,
       -15,
+      "./images/truck.left.png",
       this.ctx
     );
 
