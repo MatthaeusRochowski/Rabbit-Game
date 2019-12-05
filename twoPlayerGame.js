@@ -11,6 +11,8 @@ class RabbitTwoPlayerGame extends CanvasGame {
     this.player1 = new Player(
       (this.canvas.width / 28) * 2,
       (this.canvas.height / 11) * 10,
+      (this.canvas.width / 28),
+      (this.canvas.height / 14),
       "./images/Piedro.png",
       this.ctx
     );
@@ -18,11 +20,13 @@ class RabbitTwoPlayerGame extends CanvasGame {
     this.player2 = new Player(
       (this.canvas.width / 28) * 26,
       (this.canvas.height / 11) * 10,
+      (this.canvas.width / 28), 
+      (this.canvas.height / 14),
       "./images/Francesca.png",
       this.ctx
     );
 
-    this.carrot = new Carrot(this.canvas.width, this.canvas.height, this.ctx);
+    this.carrot = new Carrot(this.canvas.width, this.canvas.height,  (this.canvas.width / 50), (this.canvas.height / 25), this.ctx);
 
     // Instantiate 8 car objects
     // carArray
@@ -169,7 +173,6 @@ class RabbitTwoPlayerGame extends CanvasGame {
     switch (keyCode) {
       // Player One Move
       case 87:
-        console.log("P1 movie up");
         this.player1.positionY -= 10;
         if (
           this.player1.positionY <
@@ -283,6 +286,8 @@ class RabbitTwoPlayerGame extends CanvasGame {
       return (this.carrot = new Carrot(
         this.canvas.width,
         this.canvas.height,
+        (this.canvas.width / 50), 
+        (this.canvas.height / 25),
         this.ctx
       ));
     }
@@ -304,6 +309,8 @@ class RabbitTwoPlayerGame extends CanvasGame {
       return (this.carrot = new Carrot(
         this.canvas.width,
         this.canvas.height,
+        (this.canvas.width / 50), 
+        (this.canvas.height / 25),
         this.ctx
       ));
     }
