@@ -1,59 +1,51 @@
-/* body {
-  padding: 0;
-  text-align: center;
-} */
-
-/*.game-intro p {
-  display: flex;
-  justify-content: flex-end;
-  font-size: 18px;
-  font-family: "Verdana";
-}*/
-
 .logo-img {
-  width: 200px;
-}
-
-.arrows-img {
-  height: 100px;
+  width: 150px;
 }
 
 body button {
-  font-size: 30px;
+  font-size: 20px;
   background-color: #870007;
   color: #fff;
-  padding: 20px 40px;
+  padding: 20px 20px;
   border: 0;
   box-shadow: 0;
   border-radius: 5px;
-  margin-bottom: 20px;
+  margin: 0px 15px 0px 25px;
 }
 
-/* #game-board {
-  float: left;
-  padding: 20px 0px;
-} */
-#game-board {
+#game-info {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
-  align-items: center;
   font-size: 18px;
-  font-family: "Verdana";
-  text-align: center;
-  
+  margin-left: 70px;
+  font-family: "Courier New";
+  text-align: left;
+}
+
+#game-info h1 {
+  margin: 0px 0px 0px 6px;
+  color: darkred
+}
+
+#game-info h3 {
+  margin: 6px
+}
+
+#game-info p {
+  margin: 6px
 }
 
 .game-intro {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: flex-start;
  
 }
 
 .start-game-buttons {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
   justify-items: center;
 }
