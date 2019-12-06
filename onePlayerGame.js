@@ -66,7 +66,7 @@ class RabbitOnePlayerGame extends CanvasGame {
       //Cars right side
   
       this.car5 = new Car(
-        1400,
+        this.canvas.width,
         (this.canvas.height / 11) * 1 + carHeight / 4,
         carWidth,
         carHeight,
@@ -75,7 +75,7 @@ class RabbitOnePlayerGame extends CanvasGame {
         this.ctx
       );
       this.car6 = new Car(
-        1400,
+        this.canvas.width,
         (this.canvas.height / 11) * 2 + truckHeight / 4,
         truckWidth,
         truckHeight,
@@ -84,7 +84,7 @@ class RabbitOnePlayerGame extends CanvasGame {
         this.ctx
       );
       this.car7 = new Car(
-        1400,
+        this.canvas.width,
         (this.canvas.height / 11) * 3 + carHeight / 4,
         carWidth,
         carHeight,
@@ -93,7 +93,7 @@ class RabbitOnePlayerGame extends CanvasGame {
         this.ctx
       );
       this.car8 = new Car(
-        1400,
+        this.canvas.width,
         (this.canvas.height / 11) * 4 + truckHeight / 4,
         truckWidth,
         truckHeight,
