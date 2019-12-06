@@ -6,12 +6,14 @@ window.onload = function() {
   startOnePlayer.onclick = function() {
     myCanvas = document.getElementById("canvasId");
     if(myCanvas) myCanvas.remove();
-    new RabbitOnePlayerGame(1400, 715);
+    let headerHeight = document.querySelector("header").clientHeight;
+    new RabbitOnePlayerGame(window.innerWidth * 0.90, window.innerHeight * 0.95 - headerHeight);
   };
 
   startTwoPlayer.onclick = function() {
     myCanvas = document.getElementById("canvasId");
     if(myCanvas) myCanvas.remove();
-    new RabbitTwoPlayerGame(1400, 715);
+    let headerHeight = document.querySelector("header").clientHeight;
+    new RabbitTwoPlayerGame(window.innerWidth * 0.90, window.innerHeight * 0.95 - headerHeight);
   };
 };

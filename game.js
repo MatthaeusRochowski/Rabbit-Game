@@ -6,7 +6,7 @@ class CanvasGame {
     this.canvas.height = height;
     this.canvas.style = "border: 1px solid white";
     this.ctx = this.canvas.getContext("2d");
-    this.canvas.style = "margin-left: 150px";
+    this.canvas.style = "margin-left: 50px";
     document.body.after(this.canvas, document.body.childNodes[2]);
   }
 }
