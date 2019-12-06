@@ -24,7 +24,7 @@ class Player extends MovingRectangle {
   constructor(x, y, width, height, imgSrc, ctx) {
     super(x, y, "red", width, height, ctx);
     this.img.src = imgSrc;
-    this.points = 9400;
+    this.points = 0;
     this.lifes = 3;
     this.carrots = 0;
   }
